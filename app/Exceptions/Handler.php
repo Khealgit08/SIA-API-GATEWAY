@@ -59,7 +59,7 @@ class Handler extends ExceptionHandler{
         if ($exception instanceof ClientException) {
             $message = $exception->getResponse()->getBody();
             $code = $exception->getCode();
-            return $this->errorMessage($message,200);
+            return $this->errorResponse($message,200);
         }
         
         // http not found
