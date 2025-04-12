@@ -21,9 +21,14 @@ trait ConsumesExternalService {
             $headers['Authorization'] = $this->secret;
         }
 
+        $headers = array_merge([
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json',
+        ], $headers);
+        
         // perform the request (method, url, formparameters, headers)
         $response = $client->request($method,$requestUrl,[
-            'form_params' =>$form_params, 
+            'json' => $form_params, 
             'headers' =>$headers
         ]);
 
